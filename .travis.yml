@@ -5,9 +5,10 @@ language: rust
 rust:
   - nightly
 script:
+  - cargo clean
   - cargo build --verbose
   - cargo test --verbose
-  - make clean doc
+  - cargo doc --verbose
 after_script:
   - curl http://www.rust-ci.org/artifacts/put?t=$RUSTCI_TOKEN | sh
 notifications:
