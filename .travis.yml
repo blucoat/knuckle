@@ -1,9 +1,11 @@
 env:
   global:
     - secure: a0aZLlsuJdEsS/94pcCIr9D0WPdoawBH/dCz39/RAxTcT+g56YzlU4RtjyVqnlo92qPYAs11r/CrAGKCJHS92GIESUziA0ZDwgkKpPerJYl/OcTL612ArARO02UDNsD67y+gAOZF5xrt/Sppro65oIqKVYRwY+HKcESlQqp9/b0=
-install:
-  - curl -s https://static.rust-lang.org/rustup.sh | sh -s - --yes
-  - export LD_LIBRARY_PATH=$PWD/target/:/usr/local/lib/
+language: rust
+rust:
+  - stable
+  - beta
+  - nightly
 script:
   - cargo build --verbose
   - cargo test --verbose
