@@ -3,8 +3,6 @@ env:
     - secure: a0aZLlsuJdEsS/94pcCIr9D0WPdoawBH/dCz39/RAxTcT+g56YzlU4RtjyVqnlo92qPYAs11r/CrAGKCJHS92GIESUziA0ZDwgkKpPerJYl/OcTL612ArARO02UDNsD67y+gAOZF5xrt/Sppro65oIqKVYRwY+HKcESlQqp9/b0=
 language: rust
 rust:
-  - stable
-  - beta
   - nightly
 script:
   - cargo build --verbose

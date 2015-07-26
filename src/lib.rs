@@ -1,9 +1,7 @@
 #![crate_name = "knuckle"]
 #![crate_type = "lib"]
 
-#![feature(libc)]
-#![feature(vec_push_all, slice_bytes)]
-
+#![feature(slice_bytes, vec_push_all)]
 //#![deny(missing_doc)]
 
 //! `knuckle` is an opinionated Rust language interface to the
