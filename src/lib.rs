@@ -1,7 +1,8 @@
 #![crate_name = "knuckle"]
 #![crate_type = "lib"]
 
-#![feature(core, collections, libc)]
+#![feature(libc)]
+#![feature(vec_push_all, slice_bytes)]
 
 //#![deny(missing_doc)]
 
@@ -35,19 +36,15 @@ pub use bindings::*;
 
 /// Exposes direct Rust bindings to the C NaCl interface.
 #[allow(dead_code)]
-#[stable]
 pub mod bindings;
 
 /// Provides authenticated asymmetric key cryptography operations.
-#[stable]
 pub mod cryptobox;
 
 /// Simple interface to strong cryptographic hash function.
-#[stable]
 pub mod hash;
 
 /// Provides authenticated symmetric key cryptography operations.
-#[stable]
 pub mod secretbox;
 
 /// Provides simple interface to generate and validate digital signatures.
