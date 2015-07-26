@@ -219,7 +219,7 @@ fn test_cryptobox_sanity() {
 
         let msg: Vec<u8> = repeat(i as u8).take(i * 4).collect();
 
-        let boxed = box1.encrypt(msg.as_ref());
+        let boxed = box1.encrypt(&msg);
 
         print!("enc:\t{:?}\nnonce:\t{:?}\n", boxed.cipher, boxed.nonce.to_vec());
 
@@ -305,7 +305,7 @@ fn test_cryptobox_boxedmsg() {
     let boxed = cb.encrypt(msg);
 
     let bytes = boxed.as_bytes();
-    let reboxed = BoxedMsg::from_bytes(bytes.as_ref());
+    let reboxed = BoxedMsg::from_bytes(&bytes);
 
     assert!(reboxed.is_some());
 

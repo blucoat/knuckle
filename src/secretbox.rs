@@ -144,7 +144,7 @@ fn test_secretbox_sanity() {
         let msg: Vec<u8> = repeat(i as u8).take(i * 4).collect();
 
         let key = SecretKey::from_str("some secret key");
-        let SecretMsg { nonce, cipher } = key.encrypt(msg.as_ref());
+        let SecretMsg { nonce, cipher } = key.encrypt(&msg);
 
         println!("enc:\t{:?}\nnonce:\t{:?}", cipher, nonce.to_vec());
 
@@ -166,8 +166,8 @@ fn test_secretbox_uniqueness() {
     let key1 = SecretKey::from_str("1");
     let key2 = SecretKey::from_str("");
 
-    let SecretMsg { nonce: n1, cipher: c1 } = key1.encrypt(msg.as_ref());
-    let SecretMsg { nonce: n2, cipher: c2 } = key2.encrypt(msg.as_ref());
+    let SecretMsg { nonce: n1, cipher: c1 } = key1.encrypt(&msg);
+    let SecretMsg { nonce: n2, cipher: c2 } = key2.encrypt(&msg);
 
     assert!(n1 != n2);
     assert!(c1 != c2);
@@ -182,7 +182,7 @@ fn test_secretbox_mac_sanity() {
 
     let key = SecretKey::from_str("some secret key");
 
-    let SecretMsg { nonce, cipher } = key.encrypt(msg.as_ref());
+    let SecretMsg { nonce, cipher } = key.encrypt(&msg);
 
     let mut ciphers = [cipher.clone(), cipher.clone(), cipher.clone()];
 
@@ -209,7 +209,7 @@ fn test_secretbox_secretmsg() {
     let encr = key.encrypt(msg);
 
     let secret_msg= encr.as_bytes();
-    let re_encr = SecretMsg::from_bytes(secret_msg.as_ref());
+    let re_encr = SecretMsg::from_bytes(&secret_msg);
 
     assert!(re_encr.is_some());
 

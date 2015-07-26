@@ -164,7 +164,7 @@ fn test_sign_sanity() {
 
         println!("sk: {:?}\npk: {:?}", &sk[..], &pk[..]);
 
-        let sig = keypair.sign(msg.as_ref());
+        let sig = keypair.sign(&msg);
         let desig = sig.verify();
 
         println!("msg:\t{:?}\nsig:\t{:?}\ndesig:\t{:?}", msg, sig.signed, desig);
@@ -219,7 +219,7 @@ fn test_sign_serialization() {
 
     let signed = keypair.sign(msg);
     let serialized = signed.as_bytes();
-    let deserialized = SignedMsg::from_bytes(serialized.as_ref());
+    let deserialized = SignedMsg::from_bytes(&serialized);
 
     assert!(deserialized.is_some());
 
